@@ -1,0 +1,6 @@
+{
+  "parent": "chemsolutions:block/machine_generic",
+  "textures": {
+    "front": "chemsolutions:block/machine_grinder"
+  }
+}

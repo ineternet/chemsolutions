@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "chemsolutions:ore_dust_iron"
+  },
+  "result": "minecraft:iron_nugget",
+  "count": 6,
+  "experience": 0.5,
+  "cookingtime": 40
+}

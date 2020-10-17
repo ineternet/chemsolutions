@@ -1,0 +1,18 @@
+{
+  "item.chemsolutions.ore_rocks_iron": "Iron Ore Rocks",
+  "item.chemsolutions.ore_dust_iron": "Iron Ore Dust",
+  "item.chemsolutions.ore_rocks_gold": "Gold Ore Rocks",
+  "item.chemsolutions.ore_dust_gold": "Gold Ore Dust",
+  "item.chemsolutions.ore_rocks_diamond": "Diamond Ore Rocks",
+  "item.chemsolutions.ore_dust_diamond": "Diamond Ore Dust",
+  "item.chemsolutions.carbonfiber_sheet": "Carbon fiber sheet",
+  "item.chemsolutions.carbonfiber_spool": "Spool of carbon fibers",
+  "item.chemsolutions.carbonfiber_plating": "Carbon Fiber Plating",
+  "item.chemsolutions.carbonfiber_chestplate": "CFRP-Plated Diamond Chestplate",
+  "block.chemsolutions.machine_grinder": "Ore Crusher",
+  "container.ore_grinder": "Ore Crusher",
+  "container.ore_grinder.energy": "Energy stored: %sFE",
+  "tooltip.chemsolutions.carbonfiber_plating": "Apply to diamond armor in a Smithing Table",
+  "tooltip.chemsolutions.carbonfiber_sheet.warning": "Dangerous crafting process! Use mechanical loom",
+  "text.storeditem": "Stored item%s%s"
+}

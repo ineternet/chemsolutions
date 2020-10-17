@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "chemsolutions:item/ore_rocks",
+    "layer1": "chemsolutions:item/ore_rocks_overlay"
+  }
+}

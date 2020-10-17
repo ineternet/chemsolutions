@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "chemsolutions:block/machine_grinder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "chemsolutions:block/machine_grinder"
+    },
+    "facing=south": {
+      "model": "chemsolutions:block/machine_grinder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "chemsolutions:block/machine_grinder",
+      "y": 270
+    }
+  }
+}

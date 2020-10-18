@@ -29,7 +29,7 @@ public class ItemRegistrar {
     private static final Style SUBTLE_TOOLTIP = Style.EMPTY.setItalic(true).setColor(Color.fromInt(0xFF404040));
     private static final Style WARN_TOOLTIP = Style.EMPTY.setItalic(true).setColor(Color.fromInt(0xFF8300));
     public static Map<String, Rocks> ORE_ROCKS = new HashMap<>();
-    public static Map<String, Dust> ORE_DUSTS = new HashMap<>();
+    public static Map<String, OreDust> ORE_DUSTS = new HashMap<>();
     public static Item CARBONFIBER_PLATING = new Item(new Item.Properties()) {
         @Override
         public void addInformation(ItemStack p_77624_1_, @Nullable World p_77624_2_, List<ITextComponent> p_77624_3_, ITooltipFlag p_77624_4_) {
@@ -91,7 +91,7 @@ public class ItemRegistrar {
     static {
         for (Ore ore : Ore.values()) {
             ORE_ROCKS.put("rocks_" + ore.registrySuffix, new Rocks(ore));
-            ORE_DUSTS.put("dust_" + ore.registrySuffix, new Dust(ore));
+            ORE_DUSTS.put("dust_" + ore.registrySuffix, new OreDust(ore));
         }
     }
 
@@ -101,7 +101,7 @@ public class ItemRegistrar {
             RegistryObject<Item> oreRocksRegistryObject = ITEMS.register("ore_rocks_" + oreRocks.baseOre.registrySuffix, () -> oreRocks);
         }
         //Dusts
-        for (Dust oreDust : ORE_DUSTS.values()) {
+        for (OreDust oreDust : ORE_DUSTS.values()) {
             RegistryObject<Item> oreDustRegistryObject = ITEMS.register("ore_dust_" + oreDust.baseOre.registrySuffix, () -> oreDust);
         }
 
@@ -115,7 +115,7 @@ public class ItemRegistrar {
 
     public static void registerItemColors() {
         //This code needs to be executed on the client
-        for (Dust oreDust : ORE_DUSTS.values()) {
+        for (OreDust oreDust : ORE_DUSTS.values()) {
             Minecraft.getInstance().getItemColors().register(((itemStack, i) -> oreDust.baseOre.colorMultiplier), oreDust);
         }
 

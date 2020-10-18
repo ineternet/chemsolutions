@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#W#",
+    "iIi",
+    "iYi"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glass"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_bars"
+    },
+    "Y": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "chemsolutions:generator_firebox",
+    "count": 1
+  }
+}

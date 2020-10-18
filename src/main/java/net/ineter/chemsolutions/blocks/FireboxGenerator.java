@@ -188,7 +188,7 @@ public class FireboxGenerator extends EnergyGenerator {
         public void tick() {
             if (burntime <= 0) {
                 ItemStack input = handler.getStackInSlot(0);
-                int fueltime = ForgeHooks.getBurnTime(input);
+                int fueltime = ForgeHooks.getBurnTime(input) / 4;
                 if (fueltime > 0) {
                     lastItemBurntime = fueltime;
                     burntime = fueltime;

@@ -1,20 +1,26 @@
 package net.ineter.chemsolutions.blocks;
 
-import net.ineter.chemsolutions.recipes.GrinderRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
+import java.util.function.Predicate;
 
 //Item handler for the input slot of furnace blocks
 public class FurnaceInputHandler implements IItemHandler {
     private final ItemStackHandler blockHandler;
     private final int inputSlot; //The slot of the ItemStackHandler that represents the input
+    private final Predicate<ItemStack> validItems;
 
-    public FurnaceInputHandler(ItemStackHandler blockHandler, int inputSlot) {
+    public FurnaceInputHandler(ItemStackHandler blockHandler, int inputSlot, Predicate<ItemStack> allowedItemsPredicate) {
         this.blockHandler = blockHandler;
         this.inputSlot = inputSlot;
+        this.validItems = allowedItemsPredicate;
+    }
+
+    public FurnaceInputHandler(ItemStackHandler blockHandler, int inputSlot) {
+        this(blockHandler, inputSlot, x -> true);
     }
 
     @Override
@@ -56,7 +62,7 @@ public class FurnaceInputHandler implements IItemHandler {
     @Override
     public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
         if (slot == inputSlot)
-            return GrinderRecipe.findRecipe(stack) != null;
+            return validItems.test(stack);
         return false;
     }
 }

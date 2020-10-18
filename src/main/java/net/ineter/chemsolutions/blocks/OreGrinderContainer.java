@@ -1,5 +1,6 @@
 package net.ineter.chemsolutions.blocks;
 
+import net.ineter.chemsolutions.recipes.GrinderRecipe;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -38,7 +39,7 @@ public class OreGrinderContainer extends Container {
             this.inventory = te.handler;
         }
 
-        SlotItemHandler inputSlot = new SlotItemHandler(new ContainerInputSlotHandler(inventory, 0), 0, 56, 35);
+        SlotItemHandler inputSlot = new SlotItemHandler(new ContainerInputSlotHandler(inventory, 0, s -> GrinderRecipe.findRecipe(s) != null), 0, 56, 35);
         this.addSlot(inputSlot);
         SlotItemHandler outputSlot = new SlotItemHandler(new ContainerOutputSlotHandler(inventory, 1), 0, 116, 35);
         this.addSlot(outputSlot);

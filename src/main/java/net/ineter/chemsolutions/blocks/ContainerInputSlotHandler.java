@@ -1,19 +1,25 @@
 package net.ineter.chemsolutions.blocks;
 
-import net.ineter.chemsolutions.recipes.GrinderRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
+import java.util.function.Predicate;
 
 public class ContainerInputSlotHandler implements IItemHandlerModifiable {
     private final ItemStackHandler inventory;
     private final int inputSlot;
+    private final Predicate<ItemStack> validItems;
 
-    public ContainerInputSlotHandler(ItemStackHandler inventory, int inputSlot) {
+    public ContainerInputSlotHandler(ItemStackHandler inventory, int inputSlot, Predicate<ItemStack> allowedItemsPredicate) {
         this.inventory = inventory;
         this.inputSlot = inputSlot;
+        this.validItems = allowedItemsPredicate;
+    }
+
+    public ContainerInputSlotHandler(ItemStackHandler inventory, int inputSlot) {
+        this(inventory, inputSlot, s -> true);
     }
 
     @Override
@@ -56,7 +62,7 @@ public class ContainerInputSlotHandler implements IItemHandlerModifiable {
     @Override
     public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
         if (slot == inputSlot)
-            return GrinderRecipe.findRecipe(stack) != null;
+            return validItems.test(stack);
         return false;
     }
 

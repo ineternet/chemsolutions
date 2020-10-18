@@ -10,8 +10,11 @@
   "item.chemsolutions.carbonfiber_plating": "Carbon Fiber Plating",
   "item.chemsolutions.carbonfiber_chestplate": "CFRP-Plated Diamond Chestplate",
   "block.chemsolutions.machine_grinder": "Ore Crusher",
+  "block.chemsolutions.generator_firebox": "Firebox Generator",
   "container.ore_grinder": "Ore Crusher",
+  "container.generator_firebox": "Firebox Generator",
   "container.ore_grinder.energy": "Energy stored: %sFE",
+  "container.generator.burntime": "Remaining burn time: %s ticks",
   "tooltip.chemsolutions.carbonfiber_plating": "Apply to diamond armor in a Smithing Table",
   "tooltip.chemsolutions.carbonfiber_sheet.warning": "Dangerous crafting process! Use mechanical loom",
   "text.storeditem": "Stored item%s%s"

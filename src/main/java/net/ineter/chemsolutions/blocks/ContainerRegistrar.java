@@ -16,11 +16,15 @@ public class ContainerRegistrar {
     public static final RegistryObject<ContainerType<OreGrinderContainer>> oreGrinderContainerRegistryObject = CONTAINERS.register("machine_generic",
             () -> IForgeContainerType.create((wid, inv, data) -> new OreGrinderContainer(wid, inv.player.getEntityWorld(), data.readBlockPos(), inv, inv.player)));
 
+    public static final RegistryObject<ContainerType<FireboxGenerator.FireboxGeneratorContainer>> fireboxGeneratorContainerRegistryObject = CONTAINERS.register("generator_firebox",
+            () -> IForgeContainerType.create((wid, inv, data) -> new FireboxGenerator.FireboxGeneratorContainer(wid, inv.player.getEntityWorld(), data.readBlockPos(), inv, inv.player)));
+
     public static void registerAll() {
         CONTAINERS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     public static void registerGuis() {
         ScreenManager.registerFactory(oreGrinderContainerRegistryObject.get(), GrinderContainerScreen::new);
+        ScreenManager.registerFactory(fireboxGeneratorContainerRegistryObject.get(), FireboxGenerator.FireboxContainerScreen::new);
     }
 }

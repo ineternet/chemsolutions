@@ -29,11 +29,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class OreGrinderTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
-    public final MachineEnergyStorage energyStorage = new MachineEnergyStorage(40000) {{
-        energy = capacity;
-    }};
+    public final MachineEnergyStorage energyStorage = new MachineEnergyStorage(40000);
     private int perTickRf = 20;
-    private LazyOptional<? extends IItemHandler> inputHandler = LazyOptional.of(() -> new FurnaceInputHandler(this.handler, 0));
+    private LazyOptional<? extends IItemHandler> inputHandler = LazyOptional.of(() -> new FurnaceInputHandler(this.handler, 0, s -> GrinderRecipe.findRecipe(s) != null));
     private LazyOptional<? extends IItemHandler> outputHandler = LazyOptional.of(() -> new FurnaceOutputHandler(this.handler, 1));
     private int cookTicks = 0;
     public ItemStackHandler handler = new ItemStackHandler(2) {

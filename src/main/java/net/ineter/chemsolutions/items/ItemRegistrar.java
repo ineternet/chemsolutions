@@ -18,9 +18,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static net.ineter.chemsolutions.ChemistrySolutions.MODID;
 
@@ -30,6 +28,8 @@ public class ItemRegistrar {
     private static final Style WARN_TOOLTIP = Style.EMPTY.setItalic(true).setColor(Color.fromInt(0xFF8300));
     public static Map<String, Rocks> ORE_ROCKS = new HashMap<>();
     public static Map<String, OreDust> ORE_DUSTS = new HashMap<>();
+    public static Map<String, Dust> ORE_PULVS = new HashMap<>();
+    public static Map<String, OxideDust> ORE_OXIDES = new HashMap<>();
     public static Item CARBONFIBER_PLATING = new Item(new Item.Properties()) {
         @Override
         public void addInformation(ItemStack p_77624_1_, @Nullable World p_77624_2_, List<ITextComponent> p_77624_3_, ITooltipFlag p_77624_4_) {
@@ -93,7 +93,22 @@ public class ItemRegistrar {
             ORE_ROCKS.put("rocks_" + ore.registrySuffix, new Rocks(ore));
             ORE_DUSTS.put("dust_" + ore.registrySuffix, new OreDust(ore));
         }*/
-        
+        final Collection<Ore> rockable_ores = Arrays.asList(Ore.GOLD, Ore.IRON, Ore.DIAMOND);
+        final Collection<Ore> dustable_ores = Arrays.asList(Ore.GOLD, Ore.IRON, Ore.DIAMOND);
+        final Collection<Ore> pulvable_ores = Arrays.asList(Ore.GOLD, Ore.IRON, Ore.DIAMOND);
+        final Collection<Ore> oxide_ores = Arrays.asList(Ore.IRON);
+
+        for (Ore ore : rockable_ores)
+            ORE_ROCKS.put("rocks_" + ore.registrySuffix, new Rocks(ore));
+
+        for (Ore ore : dustable_ores)
+            ORE_DUSTS.put("dust_" + ore.registrySuffix, new OreDust(ore));
+
+        for (Ore ore : pulvable_ores)
+            ORE_PULVS.put("pulv_" + ore.registrySuffix, new Dust(ore));
+
+        for (Ore ore : oxide_ores)
+            ORE_OXIDES.put("oxide_" + ore.registrySuffix, new OxideDust(ore));
     }
 
     public static void registerAll() {
@@ -101,9 +116,17 @@ public class ItemRegistrar {
         for (Rocks oreRocks : ORE_ROCKS.values()) {
             RegistryObject<Item> oreRocksRegistryObject = ITEMS.register("ore_rocks_" + oreRocks.baseOre.registrySuffix, () -> oreRocks);
         }
-        //Dusts
+        //ore dusts
         for (OreDust oreDust : ORE_DUSTS.values()) {
             RegistryObject<Item> oreDustRegistryObject = ITEMS.register("ore_dust_" + oreDust.baseOre.registrySuffix, () -> oreDust);
+        }
+        //Dusts
+        for (Dust dust : ORE_PULVS.values()) {
+            RegistryObject<Item> oreDustRegistryObject = ITEMS.register("dust_" + dust.baseOre.registrySuffix, () -> dust);
+        }
+        //Oxides
+        for (OxideDust dust : ORE_OXIDES.values()) {
+            RegistryObject<Item> oreDustRegistryObject = ITEMS.register("dust_" + dust.baseOre.registrySuffix + "_oxide", () -> dust);
         }
 
         ITEMS.register("carbonfiber_plating", () -> CARBONFIBER_PLATING);

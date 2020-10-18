@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "chemsolutions:dust_iron_oxide"
+  },
+  "result": "minecraft:iron_ingot",
+  "experience": 0.4,
+  "cookingtime": 200
+}

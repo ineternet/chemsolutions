@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "chemsolutions:item/dust"
+    "layer0": "chemsolutions:item/dust_oxide"
   }
 }

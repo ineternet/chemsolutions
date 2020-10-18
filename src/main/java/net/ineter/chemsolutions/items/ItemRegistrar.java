@@ -96,7 +96,7 @@ public class ItemRegistrar {
         final Collection<Ore> rockable_ores = Arrays.asList(Ore.GOLD, Ore.IRON, Ore.DIAMOND);
         final Collection<Ore> dustable_ores = Arrays.asList(Ore.GOLD, Ore.IRON, Ore.DIAMOND);
         final Collection<Ore> pulvable_ores = Arrays.asList(Ore.GOLD, Ore.IRON, Ore.DIAMOND);
-        final Collection<Ore> oxide_ores = Arrays.asList(Ore.IRON);
+        final Collection<Ore> oxide_ores = Collections.singletonList(Ore.IRON);
 
         for (Ore ore : rockable_ores)
             ORE_ROCKS.put("rocks_" + ore.registrySuffix, new Rocks(ore));
@@ -145,6 +145,14 @@ public class ItemRegistrar {
 
         for (Rocks oreRocks : ORE_ROCKS.values()) {
             Minecraft.getInstance().getItemColors().register(((itemStack, i) -> i > 0 ? oreRocks.baseOre.colorMultiplier : -1), oreRocks);
+        }
+
+        for (Dust oreDust : ORE_PULVS.values()) {
+            Minecraft.getInstance().getItemColors().register(((itemStack, i) -> oreDust.baseOre.colorMultiplier), oreDust);
+        }
+
+        for (OxideDust oreDust : ORE_OXIDES.values()) {
+            Minecraft.getInstance().getItemColors().register(((itemStack, i) -> oreDust.baseOre.colorMultiplier), oreDust);
         }
     }
 }

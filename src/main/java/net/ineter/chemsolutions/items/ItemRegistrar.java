@@ -89,10 +89,11 @@ public class ItemRegistrar {
     public static Item CARBONFIBER_CHESTPLATE = new ArmorItem(CARBONFIBER, EquipmentSlotType.CHEST, new Item.Properties());
 
     static {
-        for (Ore ore : Ore.values()) {
+        /*for (Ore ore : Ore.values()) {
             ORE_ROCKS.put("rocks_" + ore.registrySuffix, new Rocks(ore));
             ORE_DUSTS.put("dust_" + ore.registrySuffix, new OreDust(ore));
-        }
+        }*/
+        
     }
 
     public static void registerAll() {
